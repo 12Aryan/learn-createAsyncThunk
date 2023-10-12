@@ -3,6 +3,25 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+body{
+  background-color: black;
+  color: #39d353;;
+}
+button{
+  color: #39d353;
+  background-color: black;
+  border: 1px solid #39d353;
+  padding: 0.5rem 2rem;
+}
+input{
+  color: #39d353;
+  background-color: black;
+  /* border: 1px solid #39d353; */
+  border: none;
+  padding: 0.5rem 2rem;
+  outline: 1px solid #39d353;
+}
 .header-wrapper{
   display: flex;
   justify-content: center;

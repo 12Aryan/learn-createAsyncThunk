@@ -54,14 +54,14 @@ const GithubUsers = () => {
           users.map((user, i) => {
             return (
               <div key={i} className="card">
-                <img src={user.avatar_url} alt="" style={{ height: "150px" }} />
+                <img src={user?.avatar_url} alt="" style={{ height: "150px" }} />
                 <code style={{ display: "block" }}>
                   Followers: {user?.followers}
                 </code>
                 <code style={{ display: "block" }}>
                   Following: {user?.following}
                 </code>
-                <code style={{ display: "block" }}>{user.login}</code>
+                <code style={{ display: "block" }}>{user?.login}</code>
               </div>
             );
           })
