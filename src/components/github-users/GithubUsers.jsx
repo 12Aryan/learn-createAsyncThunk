@@ -10,7 +10,7 @@ const GithubUsers = () => {
   if (searchQuery !== null && searchQuery !== "") {
     users = [users];
   }
-
+ 
 
   const getUsers = () => {
     dispatch(fetchGithubUsers(searchQuery));
@@ -43,7 +43,7 @@ const GithubUsers = () => {
           <h1>Loading...</h1>
         ) : error !== null ? (
           "Error"
-        ) : (
+        ) : users.length===0? (<h2>No data Found..</h2>) : (
           users &&
           users.length > 0 &&
           users.map((user, i) => {
