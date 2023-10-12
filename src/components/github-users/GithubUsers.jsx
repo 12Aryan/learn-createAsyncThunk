@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGithubUsers } from "./redux-slice/github-users-slice";
 import { type } from "@testing-library/user-event/dist/type";
@@ -13,12 +13,20 @@ const GithubUsers = () => {
   console.log("users--", users);
   // console.log("loading--", loading);
   // console.log("error--", error);
-  console.log("com[pp");
+  // console.log("com[pp");
   // console.log('users-------------', typeof users)
+  console.log('searchQuery--', searchQuery===''?'true': "false")
 
   const getUsers = () => {
     dispatch(fetchGithubUsers(searchQuery));
   };
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+  useEffect(() => {
+    getUsers();
+  }, [searchQuery]);
   return (
     <>
       <div className="header-wrapper">
@@ -27,7 +35,9 @@ const GithubUsers = () => {
           placeholder="Search by name"
           onChange={(e) => setSearchQuery(e.target.value)}
         />
-        <button onClick={getUsers}>Get github users</button>
+        {searchQuery === null || searchQuery === "" && (
+          <button onClick={getUsers}>Get github users</button>
+        )}
       </div>
       <div className="wrapper">
         {loading === true ? (
@@ -42,10 +52,10 @@ const GithubUsers = () => {
               <div key={i} className="card">
                 <img src={user.avatar_url} alt="" style={{ height: "150px" }} />
                 <code style={{ display: "block" }}>
-                  Followers: {user.followers}
+                  Followers: {user?.followers}
                 </code>
                 <code style={{ display: "block" }}>
-                  Following: {user.following}
+                  Following: {user?.following}
                 </code>
                 <code style={{ display: "block" }}>{user.login}</code>
               </div>
