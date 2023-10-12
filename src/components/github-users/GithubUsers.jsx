@@ -10,12 +10,7 @@ const GithubUsers = () => {
   if (searchQuery !== null && searchQuery !== "") {
     users = [users];
   }
-  // console.log("users--", users);
-  // console.log("loading--", loading);
-  // console.log("error--", error);
-  // console.log("com[pp");
-  // console.log('users-------------', typeof users)
-  console.log("searchQuery--", searchQuery === "" ? "true" : "false");
+
 
   const getUsers = () => {
     dispatch(fetchGithubUsers(searchQuery));
