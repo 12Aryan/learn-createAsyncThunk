@@ -10,12 +10,12 @@ const GithubUsers = () => {
   if (searchQuery !== null && searchQuery !== "") {
     users = [users];
   }
-  console.log("users--", users);
+  // console.log("users--", users);
   // console.log("loading--", loading);
   // console.log("error--", error);
   // console.log("com[pp");
   // console.log('users-------------', typeof users)
-  console.log('searchQuery--', searchQuery===''?'true': "false")
+  console.log("searchQuery--", searchQuery === "" ? "true" : "false");
 
   const getUsers = () => {
     dispatch(fetchGithubUsers(searchQuery));
@@ -33,9 +33,13 @@ const GithubUsers = () => {
         <input
           type="text"
           placeholder="Search by name"
-          onChange={(e) => setSearchQuery(e.target.value)}
+          onChange={(e) =>
+            e.target.value === ""
+              ? setSearchQuery(null)
+              : setSearchQuery(e.target.value.trim())
+          }
         />
-        {searchQuery === null || searchQuery === "" && (
+        {searchQuery === null && (
           <button onClick={getUsers}>Get github users</button>
         )}
       </div>

@@ -4,7 +4,7 @@ export const fetchGithubUsers = createAsyncThunk(
   "/fetchgithubusers",
   async (searchQuery) => {
     try {
-      console.log("helo-", searchQuery);
+      // console.log("helo-", searchQuery);
       if (searchQuery === null || searchQuery === "") {
         const response = await fetch(" https://api.github.com/users");
         const result = await response.json();
